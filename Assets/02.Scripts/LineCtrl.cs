@@ -68,6 +68,12 @@ public class LineCtrl : MonoBehaviour {
         }
     }
 
+    public void SpriteImgSetUp(Sprite sprite)
+    {
+        
+        this.spriteRenderer.sprite = sprite;
+    }
+
     public void AddPoint(Vector3 point)
     {
         if (lineRenderer != null)

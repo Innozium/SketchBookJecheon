@@ -29,6 +29,7 @@ public class PenManager : MonoBehaviour {
     public SELECT_PEN select_pen = SELECT_PEN.Pen;
     
     public Material material;
+    public Material normalMaterial;
     public Color color = Color.black;
     public Sprite sprite;
 
@@ -176,6 +177,7 @@ public class PenManager : MonoBehaviour {
                         lineCtrl = stamp.GetComponent<LineCtrl>();
                     }
 
+                    
                     linesCount++;
 
                     currentSortingOrder++;
@@ -183,6 +185,8 @@ public class PenManager : MonoBehaviour {
                     lineCtrl.SpriteCreate();
 
                     lineCtrl.SetSortingOrder(currentSortingOrder);
+
+                    lineCtrl.SpriteImgSetUp(sprite);
 
                     Vector3 pos = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
 
@@ -296,6 +300,8 @@ public class PenManager : MonoBehaviour {
                 lineCtrl.SpriteCreate();
 
                 lineCtrl.SetSortingOrder(currentSortingOrder);
+
+                lineCtrl.SpriteImgSetUp(sprite);
 
                 Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -413,6 +419,15 @@ public class PenManager : MonoBehaviour {
         this.sprite = sprite;
         this.select_pen = select_pen;
     }
+
+    public void LineChange(Sprite sprite, SELECT_PEN select_pen)
+    {
+        this.material = this.normalMaterial;
+        this.color = Color.white;
+        this.sprite = sprite;
+        this.select_pen = select_pen;
+    }
+
 
 
     public bool ColorChange(Color color)
