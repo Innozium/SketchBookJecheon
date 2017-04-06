@@ -9,16 +9,18 @@ public class UIMenuCtrl : MonoBehaviour {
     public Material normal;
     public Material water;
     private float width = 0.025f;
+    private int stampScale = 40; 
     private Color color = Color.black;
 
     private Sprite[] sprites;
 
     public GameObject gridObj;
     public GameObject sizeGridObj;
+    public GameObject stampSizeGrid;
     public GameObject colorGridObj;
     public GameObject stampGridObj;
     private StampBtnCtrl[] contentBts;
-
+    
 
     private void Awake()
     {
@@ -81,6 +83,7 @@ public class UIMenuCtrl : MonoBehaviour {
     {
         PenManager.Instance.LineChange(normal, color, SELECT_PEN.Pen);
         sizeGridObj.SetActive(true);
+        stampSizeGrid.SetActive(false);
         colorGridObj.SetActive(true);
         stampGridObj.SetActive(false);
     }
@@ -89,6 +92,7 @@ public class UIMenuCtrl : MonoBehaviour {
     {
         PenManager.Instance.LineChange(water, color, SELECT_PEN.Brush);
         sizeGridObj.SetActive(true);
+        stampSizeGrid.SetActive(false);
         colorGridObj.SetActive(true);
         stampGridObj.SetActive(false);
     }
@@ -97,6 +101,7 @@ public class UIMenuCtrl : MonoBehaviour {
     {
         PenManager.Instance.LineChange(normal, Color.white, SELECT_PEN.Eraser);
         sizeGridObj.SetActive(true);
+        stampSizeGrid.SetActive(false);
         colorGridObj.SetActive(true);
         stampGridObj.SetActive(false);
     }
@@ -105,6 +110,7 @@ public class UIMenuCtrl : MonoBehaviour {
     {
         PenManager.Instance.LineChange(normal, sprites[0], SELECT_PEN.Stamp);
         sizeGridObj.SetActive(false);
+        stampSizeGrid.SetActive(true);
         colorGridObj.SetActive(false);
         stampGridObj.SetActive(true);
     }
@@ -153,7 +159,7 @@ public class UIMenuCtrl : MonoBehaviour {
     }
     #endregion
 
-    #region 크기
+    #region 브러시 크기
     public void OnPenSize0026()
     {
         width = 0.026f;
@@ -177,6 +183,34 @@ public class UIMenuCtrl : MonoBehaviour {
         width = 0.5f;
         PenManager.Instance.width = width;
     }
+    #endregion
+
+    #region Stamp 크기
+
+    public void OnStampSize040()
+    {
+        stampScale = 40;
+        PenManager.Instance.stampScale = stampScale;
+    }
+
+    public void OnStampSize070()
+    {
+        stampScale = 70;
+        PenManager.Instance.stampScale = stampScale;
+    }
+
+    public void OnStampSize090()
+    {
+        stampScale = 90;
+        PenManager.Instance.stampScale = stampScale;
+    }
+
+    public void OnStampSize120()
+    {
+        stampScale = 120;
+        PenManager.Instance.stampScale = stampScale;
+    }
+
     #endregion
 
     #region 취소, 전체 삭제

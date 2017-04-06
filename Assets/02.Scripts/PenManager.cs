@@ -43,8 +43,10 @@ public class PenManager : MonoBehaviour {
     [Range(0.025f, 5)]
     public float width = 0.025f;
 
+    public int stampScale = 40;
+
     //현재 작동중인 라인의 스크립트가 저장될 리스트
-   private List<LineCtrl> lineList = new List<LineCtrl>();
+    private List<LineCtrl> lineList = new List<LineCtrl>();
 
     //싱글턴 패턴을 위한 인스턴스 변수 선언
     private static PenManager instance = null;
@@ -165,6 +167,8 @@ public class PenManager : MonoBehaviour {
 
                     stamp.transform.SetParent(drawPanel);
 
+                    stamp.transform.localScale = new Vector3(stampScale, stampScale, 0.0f);
+
                     stamp.name = "Stamp";
 
                     stamp.tag = "LINE";
@@ -176,7 +180,6 @@ public class PenManager : MonoBehaviour {
                         stamp.AddComponent<LineCtrl>();
                         lineCtrl = stamp.GetComponent<LineCtrl>();
                     }
-
                     
                     linesCount++;
 
@@ -280,6 +283,8 @@ public class PenManager : MonoBehaviour {
                 GameObject stamp = (GameObject)Instantiate(StampPrefab, Vector3.zero, Quaternion.identity);
 
                 stamp.transform.SetParent(drawPanel);
+
+                stamp.transform.localScale = new Vector3(stampScale, stampScale, 0.0f);
 
                 stamp.name = "Stamp";
 

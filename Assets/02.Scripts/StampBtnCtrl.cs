@@ -26,7 +26,6 @@ public class StampBtnCtrl : MonoBehaviour {
     //버튼이 눌렸을 때 실행될 함수
     public void OnStampButton()
     {
-        print("qjxms");
         if (baseSprite != null)
         {
             PenManager.Instance.LineChange(baseSprite, SELECT_PEN.Stamp);
