@@ -20,7 +20,10 @@ public class UIMenuCtrl : MonoBehaviour {
     public GameObject colorGridObj;
     public GameObject stampGridObj;
     private StampBtnCtrl[] contentBts;
-    
+
+    public GameObject bgGridObj;
+    private bgImgBtnCtrl[] bgImgBtnCtrls;
+    private Sprite[] bgSprites;
 
     private void Awake()
     {
@@ -33,13 +36,13 @@ public class UIMenuCtrl : MonoBehaviour {
     {
 
         //파일이 있는가 확인
-        if (!Directory.Exists(Application.dataPath + "/../Resources"))
+        if (!Directory.Exists(Application.dataPath + "/../Resources/Stamp"))
         {   //파일이 없다면 파일을 생성한다.
-            System.IO.Directory.CreateDirectory(Application.dataPath + "/../Resources");
+            System.IO.Directory.CreateDirectory(Application.dataPath + "/../Resources/Stamp");
         }
 
         //해당 파일에서 .png의 확장자를 가지는 모든 파일의 이름을 배열에 저장한다.
-        string[] filePaths = Directory.GetFiles(Application.dataPath + "/../Resources", "*.png");
+        string[] filePaths = Directory.GetFiles(Application.dataPath + "/../Resources/Stamp", "*.png");
 
         //content의 자식중에 ScrBtnCtrl 컴포넌트를 가진 애들을 저장
         contentBts = stampGridObj.transform.GetComponentsInChildren<StampBtnCtrl>();
@@ -75,6 +78,10 @@ public class UIMenuCtrl : MonoBehaviour {
 
 
     }
+
+    #endregion
+
+    #region 배경 이미지 Set Up!
 
     #endregion
 
