@@ -129,11 +129,12 @@ public class PenManager : MonoBehaviour {
 
 #if UNITY_EDITOR
         UseLineFeatureMouse();
-#endif 
+#endif
 
+        #region 라인 정리용
 
         //시간 감소!
-        if(resetTimer < 0)
+        if (resetTimer < 0)
         {
             //시간이 0이하라면 모든 그림들을 삭제하여 
             //그림영역을 초기화 및 시간 초기화!
@@ -144,6 +145,8 @@ public class PenManager : MonoBehaviour {
         {
             resetTimer -= Time.deltaTime;
         }
+
+        #endregion
 
     }
 

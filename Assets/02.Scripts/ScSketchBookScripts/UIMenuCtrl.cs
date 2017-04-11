@@ -12,7 +12,7 @@ public class UIMenuCtrl : MonoBehaviour {
     private int stampScale = 40; 
     private Color color = Color.black;
 
-    private Sprite[] sprites;
+    private Sprite[] sprites; //
 
     public GameObject gridObj;
     public GameObject sizeGridObj;
@@ -21,9 +21,7 @@ public class UIMenuCtrl : MonoBehaviour {
     public GameObject stampGridObj;
     private StampBtnCtrl[] contentBts;
 
-    public GameObject bgGridObj;
-    private bgImgBtnCtrl[] bgImgBtnCtrls;
-    private Sprite[] bgSprites;
+    public GameObject HomePanelObj;
 
     private void Awake()
     {
@@ -76,12 +74,8 @@ public class UIMenuCtrl : MonoBehaviour {
             }
         }
 
-
+        ScChangeManager.Instance.OnFadeIN();
     }
-
-    #endregion
-
-    #region 배경 이미지 Set Up!
 
     #endregion
 
@@ -230,6 +224,25 @@ public class UIMenuCtrl : MonoBehaviour {
     {
         PenManager.Instance.OnDestroyButton();
     }
+    #endregion
+
+    #region HomeBtn 작동 관련!
+    //UI패널에서 홈버튼 누를 시 작동한다.
+    public void OnHomeButton()
+    {
+        HomePanelObj.SetActive(true);
+    }
+    //HomePanel에서 나오는 Yes버튼을 누를 시 작동
+    public void OnHomeYesBtn()
+    {
+        ScChangeManager.Instance.OnSceneChange("ScPageSelect");
+    }
+    //HomePanel에서 나오는 No버튼을 누를 시 작동
+    public void OnHomeNoBtn()
+    {
+        HomePanelObj.SetActive(false);
+    }
+
     #endregion
 
 }

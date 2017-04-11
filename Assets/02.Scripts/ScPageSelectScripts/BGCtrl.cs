@@ -12,6 +12,8 @@ public class BGCtrl : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
         //태그명을 BG로 설정한다.
         this.gameObject.tag = "BG";
+        //배경에 쓰일 이미지를 BgInfo에서 받아와 설정한다.
+        ChangeSprite(BgInfoManager.Instance.BgSprite);
     }
 
     //이미지를 바꾼다.

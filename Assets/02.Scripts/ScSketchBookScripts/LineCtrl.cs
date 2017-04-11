@@ -19,6 +19,8 @@ public class LineCtrl : MonoBehaviour {
 
     private Transform mainTr;
 
+    #region Line용
+    //최초 초기화에 사용된다.(Line용)
     public void Create()
     {
         mainTr = GetComponent<Transform>();
@@ -48,32 +50,6 @@ public class LineCtrl : MonoBehaviour {
 
     }
 
-    public void SpriteCreate()
-    {
-        mainTr = GetComponent<Transform>();
-
-        color = Color.white;
-
-        if (material == null)
-        {
-            material = new Material(Shader.Find("Sprites/Default"));
-        }
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.material = material;
-        }
-    }
-
-    public void SpriteImgSetUp(Sprite sprite)
-    {
-        
-        this.spriteRenderer.sprite = sprite;
-    }
-
     public void AddPoint(Vector3 point)
     {
         if (lineRenderer != null)
@@ -91,26 +67,7 @@ public class LineCtrl : MonoBehaviour {
             //lineRenderer.SetVertexCount(points.Count);
             lineRenderer.numPositions = (points.Count); //5.5버전
             lineRenderer.SetPosition(points.Count - 1, point);
-            
-        }
 
-    }
-
-    public void SpritePos(Vector3 point)
-    {
-        if (spriteRenderer != null)
-        {
-            point.z = pointZPosition;
-            mainTr.position = point;
-        }
-    }
-
-    public void SetMaterial(Material material)
-    {
-        this.material = material;
-        if (lineRenderer != null)
-        {
-            lineRenderer.material = this.material;
         }
     }
 
@@ -139,6 +96,65 @@ public class LineCtrl : MonoBehaviour {
         color = value;
     }
 
+    #endregion
+
+    #region Stamp용
+
+    //최초 초기화에 사용된다.(Stamp용)
+    public void SpriteCreate()
+    {
+        mainTr = GetComponent<Transform>();
+
+        color = Color.white;
+
+        if (material == null)
+        {
+            material = new Material(Shader.Find("Sprites/Default"));
+        }
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = material;
+        }
+    }
+
+    public void SpriteImgSetUp(Sprite sprite)
+    {
+        this.spriteRenderer.sprite = sprite;
+    }
+
+    public void SpritePos(Vector3 point)
+    {
+        if (spriteRenderer != null)
+        {
+            point.z = pointZPosition;
+            mainTr.position = point;
+        }
+    }
+
+    private void SetLinePoints(List<Vector3> drawingPoints)
+    {
+        lineRenderer.numPositions = (drawingPoints.Count);
+        //lineRenderer.SetVertexCount(drawingPoints.Count);
+    }
+
+
+    public void SetMaterial(Material material)
+    {
+        this.material = material;
+        if (lineRenderer != null)
+        {
+            lineRenderer.material = this.material;
+        }
+    }
+
+    #endregion
+
+    #region 공용 SortingOrder
+
     public void SetSortingOrder(int sorting)
     {
         if (lineRenderer != null)
@@ -149,16 +165,14 @@ public class LineCtrl : MonoBehaviour {
         {
             spriteRenderer.sortingOrder = sorting;
         }
-
-        //Input.acceleration
-
+        
         sortingOrder = sorting;
     }
 
-    private void SetLinePoints(List<Vector3> drawingPoints)
-    {
-        lineRenderer.numPositions = (drawingPoints.Count);
-        //lineRenderer.SetVertexCount(drawingPoints.Count);
-    }
+    #endregion
+
+
+
+
 
 }
