@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LineCtrl : MonoBehaviour {
-
+    //LineCtrl
     public int touchId = 0;
 
     public Material material;
