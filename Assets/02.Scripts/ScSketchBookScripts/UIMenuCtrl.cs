@@ -119,45 +119,14 @@ public class UIMenuCtrl : MonoBehaviour {
     #endregion
 
     #region 색
-    public void OnColorRed()
+    public void OnColorCustomColor(Color _c)
     {
-        if(PenManager.Instance.ColorChange(Color.red))
+        if (PenManager.Instance.ColorChange(_c))
         {
-            color = Color.red;
+            color = _c;
         }
     }
-
-    public void OnColorBlack()
-    {
-        if (PenManager.Instance.ColorChange(Color.black))
-        {
-            color = Color.black;
-        }
-    }
-
-    public void OnColorGreen()
-    {
-        if (PenManager.Instance.ColorChange(Color.green))
-        {
-            color = Color.green;
-        }
-    }
-
-    public void OnColorYellow()
-    {
-        if (PenManager.Instance.ColorChange(Color.yellow))
-        {
-            color = Color.yellow;
-        }
-    }
-
-    public void OnColorBlue()
-    {
-        if (PenManager.Instance.ColorChange(Color.blue))
-        {
-            color = Color.blue;
-        }
-    }
+    
     #endregion
 
     #region 브러시 크기
